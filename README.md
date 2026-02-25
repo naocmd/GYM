@@ -1,102 +1,197 @@
-# ALL-TABLES-IN-THE-DATABASE
-The database is composed of the following tables:
 
-- persona
+# Gym Performance Tracking Database
+Project Overview
 
-- entrenamientos
+This project consists of the design and implementation of a relational database to track gym attendance, exercises performed, training volume, and performance metrics.
 
-- detalle_entrenamiento
+The objective is to simulate a real-world fitness tracking system and extract meaningful insights using SQL queries.
 
-- ejercicios
+This project focuses on:
 
-- musculos
+Database modeling
 
-Below is a brief explanation of each table and how they relate to each other.
+Relational integrity (PK/FK)
 
-👤 Table persona
+Data normalization
 
-This table stores the people who participated in the project.
+Analytical SQL queries
 
-Main fields:
+Performance and attendance analysis
 
-id_persona (PK)
+# Database Structure
 
-nombre
+The database is composed of five main tables:
 
-Each person can have multiple training sessions registered.
+PERSONA
 
-🏋️ Table entrenamientos
+ENTRENAMIENTOS
 
-This table records the days when a person attended the gym.
+DETALLE_ENTRENAMIENTO
 
-Main fields:
+EJERCICIOS
 
-id_entrenamiento (PK)
+MUSCULOS
 
-id_persona (FK)
+Entity Relationship Model
+PERSONA
 
-fecha
+Stores registered users.
+
+Field	Type	Description
+ID_PERSONA	INT (PK)	Unique identifier
+NOMBRE	VARCHAR(50)	Person name
+GENERO	CHAR(1)	Gender (M/F)
 
 Relationship:
-
-One training session belongs to one person.
 
 One person can have multiple training sessions.
 
-📋 Table detalle_entrenamiento
+ENTRENAMIENTOS
 
-This table stores the exercises performed in each training session and the number of repetitions.
+Represents each gym attendance record.
 
-Main fields:
-
-id_detalle (PK)
-
-id_entrenamiento (FK)
-
-id_ejercicio (FK)
-
-repeticiones
+Field	Type	Description
+ID_ENTRENAMIENTO	INT (PK)	Training session ID
+FECHA	DATE	Date of session
+DIA_SEMANA	VARCHAR(20)	Day of week
+ASISTENCIA	BOOLEAN	Attendance flag
+ID_PERSONA	INT (FK)	References PERSONA
 
 Relationship:
 
-One training session can include multiple exercises.
+Many trainings belong to one person.
 
-Each record specifies which exercise was performed and how many repetitions were completed.
+📋 DETALLE_ENTRENAMIENTO
 
-💪 Table ejercicios
+Stores exercises performed in each session.
 
-This table contains the available exercises.
-
-Main fields:
-
-id_ejercicio (PK)
-
-nombre
-
-id_musculo (FK)
+Field	Type	Description
+ID_DETALLE	INT (PK)	Detail ID
+ID_ENTRENAMIENTO	INT (FK)	References ENTRENAMIENTOS
+ID_EJERCICIO	INT (FK)	References EJERCICIOS
+PESO	DECIMAL	Weight used
+REPETICIONES	INT	Repetitions performed
 
 Relationship:
 
-Each exercise targets a specific muscle.
+One training session includes multiple exercises.
 
-One muscle can be associated with multiple exercises.
+💪 EJERCICIOS
 
-🦵 Table musculos
+Stores available exercises.
 
-This table contains the muscles that can be trained.
+Field	Type	Description
+ID_EJERCICIO	INT (PK)	Exercise ID
+NOMBRE	VARCHAR(50)	Exercise name
+DESCANSO	INT	Rest time (minutes)
+ID_MUSCULO	INT (FK)	References MUSCULOS
+🦵 MUSCULOS
 
-Main fields:
+Stores muscle groups.
 
-id_musculo (PK)
+Field	Type	Description
+ID_MUSCULO	INT (PK)	Muscle ID
+NOMBRE	VARCHAR(50)	Muscle name
 
-nombre
+# Relationships Summary
 
-🔗 Relationship Summary
+PERSONA 1:N ENTRENAMIENTOS
 
-persona 1:N entrenamientos
+ENTRENAMIENTOS 1:N DETALLE_ENTRENAMIENTO
 
-entrenamientos 1:N detalle_entrenamiento
+EJERCICIOS 1:N DETALLE_ENTRENAMIENTO
 
-ejercicios 1:N detalle_entrenamiento
+MUSCULOS 1:N EJERCICIOS
 
-musculos 1:N ejercicios
+# Analytical Queries Implemented
+
+The project includes SQL queries designed to answer real-world performance questions such as:
+
+Who lifts the maximum weight?
+
+Most frequently performed exercise
+
+Attendance ranking
+
+Total repetitions per person
+
+Exercise distribution per muscle group
+
+Most active training day
+
+Strongest male and female athlete
+
+Exercise with highest and lowest recorded weight
+
+These queries demonstrate:
+
+JOIN operations (INNER / LEFT)
+
+Aggregations (COUNT, SUM, MAX)
+
+GROUP BY
+
+Subqueries
+
+Ranking logic
+
+# Example Business Insights
+
+Using SQL aggregation and filtering, the system can determine:
+
+Training consistency per user
+
+Strength comparison between athletes
+
+Muscle group distribution
+
+Volume load (weight × reps)
+
+Performance trends
+
+# Future Improvements
+
+Planned upgrades to evolve the project into a production-level model:
+
+Implement N:M relationship between exercises and muscles
+
+Add constraints (NOT NULL, CHECK, UNIQUE)
+
+Add indexing for performance optimization
+
+Implement training volume calculations
+
+Add weekly progression analysis
+
+Automate personalized performance recommendations
+
+# Technologies Used
+
+MySQL
+
+Relational Database Design
+
+SQL (DDL & DML)
+
+Data Aggregation & Analysis
+
+# Purpose of the Project
+
+This project was built to strengthen:
+
+Relational modeling skills
+
+SQL query writing
+
+Analytical thinking
+
+Data interpretation
+
+It simulates a realistic use case in fitness performance tracking and demonstrates the ability to design and query structured relational systems.
+
+# Author
+
+[Naomi Cruz Alcañiz]
+
+Aspiring Data Analyst / Database Developer
+Focused on SQL, relational modeling and data-driven insights.
