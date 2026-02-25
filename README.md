@@ -61,7 +61,7 @@ Relationship:
 
 Many trainings belong to one person.
 
-📋 DETALLE_ENTRENAMIENTO
+DETALLE_ENTRENAMIENTO
 
 Stores exercises performed in each session.
 
@@ -76,7 +76,7 @@ Relationship:
 
 One training session includes multiple exercises.
 
-💪 EJERCICIOS
+EJERCICIOS
 
 Stores available exercises.
 
@@ -85,7 +85,8 @@ ID_EJERCICIO	INT (PK)	Exercise ID
 NOMBRE	VARCHAR(50)	Exercise name
 DESCANSO	INT	Rest time (minutes)
 ID_MUSCULO	INT (FK)	References MUSCULOS
-🦵 MUSCULOS
+
+ MUSCULOS
 
 Stores muscle groups.
 
