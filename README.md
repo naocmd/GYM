@@ -150,22 +150,6 @@ Volume load (weight × reps)
 
 Performance trends
 
-# Future Improvements
-
-Planned upgrades to evolve the project into a production-level model:
-
-Implement N:M relationship between exercises and muscles
-
-Add constraints (NOT NULL, CHECK, UNIQUE)
-
-Add indexing for performance optimization
-
-Implement training volume calculations
-
-Add weekly progression analysis
-
-Automate personalized performance recommendations
-
 # Technologies Used
 
 MySQL
